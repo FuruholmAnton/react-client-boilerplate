@@ -6,7 +6,8 @@ import '../styles/index.sass';
 import { AppContainer } from 'react-hot-loader';
 import App from './App';
 
-
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+OfflinePluginRuntime.install();
 
 ReactDOM.render(
   <AppContainer>

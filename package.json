@@ -50,6 +50,7 @@
     "file-loader": "^0.10.0",
     "html-webpack-plugin": "^2.26.0",
     "node-sass": "^3.7.0",
+    "offline-plugin": "^4.8.1",
     "postcss-import": "^10.0.0",
     "postcss-load-config": "^1.2.0",
     "postcss-loader": "^2.0.5",
