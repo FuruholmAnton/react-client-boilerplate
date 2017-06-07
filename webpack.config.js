@@ -35,6 +35,12 @@ loaders.push({
   exclude: ['node_modules']
 });
 
+loaders.push({
+	test: /\.css$/,
+	loaders: ['style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', 'postcss-loader'],
+	exclude: ['node_modules']
+});
+
 module.exports = {
   entry: [
 		'babel-polyfill',

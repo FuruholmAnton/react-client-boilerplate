@@ -5,11 +5,6 @@ module.exports = [
     loader: "babel-loader"
   },
   {
-    test: /\.css$/,
-    loaders: ['style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', 'postcss-loader'],
-    exclude: ['node_modules']
-  },
-  {
     test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
     exclude: /(node_modules|bower_components)/,
     loader: "file-loader"
