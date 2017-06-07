@@ -1,4 +1,10 @@
 # React client boilerplate
 
-
-inspired by [alicoding](https://github.com/alicoding/react-webpack-babel)
+- React
+- React Router v4
+- Webpack 2
+- Hot module reload v3
+- Babel / ES6
+- PostCSS / SCSS
+- Serverless
+- ESlint
