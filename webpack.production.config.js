@@ -5,6 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var OfflinePlugin = require('offline-plugin');
+var PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 loaders.push({
   test: /\.scss$/,
@@ -61,6 +62,11 @@ module.exports = {
         js: ['bundle.js'],
       }
     }),
+  	new PreloadWebpackPlugin({
+			rel: 'preload',
+			as: 'script',
+			include: 'asyncChunks'
+		}),
 		new OfflinePlugin()
   ]
 };

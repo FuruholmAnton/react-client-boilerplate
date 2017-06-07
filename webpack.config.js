@@ -6,6 +6,7 @@ var loaders = require('./webpack.loaders');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var DashboardPlugin = require('webpack-dashboard/plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 const HOST = process.env.HOST || "127.0.0.1";
 const PORT = process.env.PORT || "8888";
@@ -47,6 +48,12 @@ module.exports = {
     filename: 'bundle.js'
   },
   resolve: {
+		alias: {
+      Components: path.resolve(__dirname, './src/components/components'),
+      Routes: path.resolve(__dirname, './src/routes/routes.js'),
+      Core: path.resolve(__dirname, './src/core'),
+      // SVG: path.resolve(__dirname, './src/svg'),
+    },
     extensions: ['.js', '.jsx']
   },
   module: {
@@ -84,5 +91,10 @@ module.exports = {
         js: [ "bundle.js"],
       }
     }),
+  	new PreloadWebpackPlugin({
+			rel: 'preload',
+			as: 'script',
+			include: 'asyncChunks'
+		}),
   ]
 };

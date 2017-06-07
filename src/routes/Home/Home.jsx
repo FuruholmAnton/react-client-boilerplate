@@ -11,13 +11,16 @@ export default class Index extends React.Component {
     super(props);
   }
 
+	componentWillUnmount() {
+
+  }
+
   render() {
     return (
       <div className="container" /* style={{ backgroundImage: `url(${image})` }}*/>
         <h1 key="headin" className={s.heading}>Home</h1>
         <div className="home_navigation">
-          <Link to="/"><button>Projects</button></Link>
-          <Link to="/"><button>About</button></Link>
+
         </div>
       </div>
     );

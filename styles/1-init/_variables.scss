@@ -1,0 +1,53 @@
+/* VARIABLES
+========================================= */
+
+// Fonts
+$font-serif: 'Scheherazade' ,'Lora', Cambria, Georgia, "Times New Roman", Times,serif;
+$font-sans: 'Roboto', Helvetica, sans-serif;
+
+$fonts: (
+	body: $font-sans,
+	heading: $font-serif,
+	main: $font-sans
+);
+
+$responsive-type-min-width: 320px !default;
+$responsive-type-max-width: 700px !default;
+
+
+// Colors
+$colors: (
+	main: #35adc7,
+	beta: #FFC107,
+	gamma: #ddd,
+	delta: #ddd,
+	success: #66BB6A,
+	error: #C62828,
+	link: #283593,
+	text: #222,
+	background: #f8f8f8
+);
+
+$color-variations: (
+	main-dark: darken(map-get($colors, main), 10%),
+	main-light: lighten(map-get($colors, main), 10%),
+	link-visited: lighten(map-get($colors, link), 15%),
+	link-hover: darken(map-get($colors, link), 15%),
+);
+
+$colors: map-merge($colors, $color-variations);
+
+
+// Breakpoints
+$breakpoints: (
+    'width-small'   : 768px,
+    'width-medium'  : 1024px,
+    'width-large'   : 1200px,
+    'width-xlarge'  : 1400px,
+    'width-xxlarge' : 1500px,
+    'width-huge'    : 1600px,
+
+    'height-small'  : 600px,
+    'height-medium' : 770px,
+    'height-high'   : 900px
+);

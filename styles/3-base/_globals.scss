@@ -1,0 +1,12 @@
+
+:focus:not(.focus-ring) {
+    outline: none;
+}
+
+.focus-ring {
+    outline-width: 3px;
+    outline-color: #ebe7fb;
+    outline-offset: -3px;
+    outline-style: solid;
+
+}

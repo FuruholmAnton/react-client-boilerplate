@@ -1,0 +1,19 @@
+/* Base: HTML Elements
+============================================================================ */
+
+html,
+body,
+#main,
+.container {
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 0;
+}
