@@ -1,16 +1,19 @@
 var webpack = require('webpack');
 var path = require('path');
 var loaders = require('./webpack.loaders');
+var common = require('./webpack.common');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var OfflinePlugin = require('offline-plugin');
 var PreloadWebpackPlugin = require('preload-webpack-plugin');
 
+/* Extract SCSS/SASS/CSS to a separate file */
 const extractSCSS = new ExtractTextPlugin({filename: '[name]-[contenthash].css', allChunks: true});
 
+/* CSS modules */
 loaders.push({
-  test: /\.(scss|sass|css)$/,
+  test: /\.(scss|css)$/,
   use: extractSCSS.extract({
 		fallback: 'style-loader',
 		use : [
@@ -18,7 +21,7 @@ loaders.push({
 				loader: 'css-loader',
 				options: {
 					sourceMap: true,
-					modules: true,
+					modules: true, // Adds module name to the class
 					localIdentName: '[name]__[local]___[hash:base64:5]',
 				}
 			},
@@ -33,32 +36,41 @@ loaders.push({
   exclude: ['node_modules']
 });
 
-// loaders.push({
-//   test: /\.sass$/,
-//   loaders: ['style-loader', 'css-loader?importLoaders=1', 'postcss-loader', 'sass-loader'],
-//   exclude: ['node_modules']
-// });
+/* Global styles */
+loaders.push({
+  test: /\.(sass)$/,
+  use: extractSCSS.extract({
+		fallback: 'style-loader',
+		use : [
+			{
+				loader: 'css-loader',
+				options: {
+					sourceMap: true,
+					localIdentName: '[name]__[local]___[hash:base64:5]',
+				}
+			},
+			'postcss-loader',
+			{
+				loader: 'sass-loader',
+				options: {
+					outputStyle: 'expanded',
+				}
+			}
+		]}),
+  exclude: ['node_modules']
+});
 
-module.exports = {
+var config = {
   entry: [
 		'babel-polyfill',
     './src/index.jsx',
-    './styles/index.sass'
   ],
   output: {
     publicPath: './',
     path: path.join(__dirname, 'public'),
     filename: 'app-[chunkhash].js'
   },
-  resolve: {
-		alias: {
-      Components: path.resolve(__dirname, './src/components/components'),
-      Routes: path.resolve(__dirname, './src/routes/routes.js'),
-      Core: path.resolve(__dirname, './src/core'),
-      // SVG: path.resolve(__dirname, './src/svg'),
-    },
-    extensions: ['.js', '.jsx']
-  },
+	resolve: common.resolve,
   module: {
     loaders
   },
@@ -98,3 +110,5 @@ module.exports = {
 		new OfflinePlugin()
   ]
 };
+
+module.exports = config;

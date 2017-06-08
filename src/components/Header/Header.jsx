@@ -13,6 +13,7 @@ export default class NoMatch extends React.Component {
 				<nav className={s.nav}>
 					<NavLink to="/" className={s.item}>Home</NavLink>
 					<NavLink to="/about" className={s.item}>About</NavLink>
+					<NavLink to="/404" className={s.item}>404</NavLink>
 				</nav>
 			</header>
     );

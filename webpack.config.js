@@ -3,6 +3,7 @@ require('babel-polyfill');
 var webpack = require('webpack');
 var path = require('path');
 var loaders = require('./webpack.loaders');
+var common = require('./webpack.common');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var DashboardPlugin = require('webpack-dashboard/plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -41,7 +42,7 @@ loaders.push({
 	exclude: ['node_modules']
 });
 
-module.exports = {
+var config = {
   entry: [
 		'babel-polyfill',
     'react-hot-loader/patch',
@@ -53,15 +54,7 @@ module.exports = {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
   },
-  resolve: {
-		alias: {
-      Components: path.resolve(__dirname, './src/components/components'),
-      Routes: path.resolve(__dirname, './src/routes/routes.js'),
-      Core: path.resolve(__dirname, './src/core'),
-      // SVG: path.resolve(__dirname, './src/svg'),
-    },
-    extensions: ['.js', '.jsx']
-  },
+	resolve: common.resolve,
   module: {
     loaders
   },
@@ -104,3 +97,7 @@ module.exports = {
 		}),
   ]
 };
+
+// config.resolve = common.resolve;
+
+module.exports = config;
