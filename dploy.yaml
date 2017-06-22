@@ -1,7 +1,0 @@
-dev:
-    host: "files.000webhost.com"
-    user: "react-client-boilerplate"
-    pass: "fuan9204"
-    path:
-        local: "public/"
-        remote: "public_html/"
