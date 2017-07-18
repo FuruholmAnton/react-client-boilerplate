@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
-  Route,
+	BrowserRouter as Router,
+	Route,
 	Switch,
-  Link,
+	Link,
 	NavLink,
 } from 'react-router-dom';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
@@ -14,52 +14,56 @@ import { Header } from 'Components';
 import routes from 'Routes';
 
 export default class Index extends React.Component {
-  render() {
+
+	render() {
 		/* Gets the last pathname */
-		let page = location.pathname.split('/').filter(n=>n.length).pop() || 'home';
+		let page = location.pathname.split('/').filter(n => n.length).pop() || 'home';
 		console.log('Location:', page);
 		let routesArr = Object.entries(routes);
 		console.log(routesArr);
-    return (
+
+		return (
 			<div className="full">
+
 				<Header />
 
 				<Route render={({ location }) => {
 					console.log(location);
 					let value = routesArr.find((n) => n[1].path == location.pathname);
 					value = value ? value[1] : false;
+
 					return (
 						<div className="content">
-							{ (value) ? (
+							{(value) ? (
+								<CSSTransitionGroup
+									component="div"
+									className="page-transition"
+									transitionName="pageSwap"
+									transitionEnterTimeout={1000}
+									transitionLeaveTimeout={1000}>
+									<Route
+										exact={value.exact}
+										path={value.path}
+										location={location}
+										key={location.key}
+										component={value.component} />
+								</CSSTransitionGroup>
+							) : (
 									<CSSTransitionGroup
 										component="div"
 										className="page-transition"
-										transitionName="pageSwap"
+										transitionName="pageFade"
 										transitionEnterTimeout={1000}
 										transitionLeaveTimeout={1000}>
-										<Route
-											exact={value.exact}
-											path={ value.path }
-											location={location}
-											key={location.key}
-											component={value.component} />
-									</CSSTransitionGroup>
-					 				) : (
-										 <CSSTransitionGroup
-											component="div"
-											className="page-transition"
-											transitionName="pageFade"
-											transitionEnterTimeout={1000}
-											transitionLeaveTimeout={1000}>
 										<Route component={routes.noMatch.component} />
 									</CSSTransitionGroup>
-									)
-								}
+								)
+							}
 						</div>
 					)
-				}}/>
+				}} />
 
 			</div>
-    );
-  }
+		);
+	}
 }
