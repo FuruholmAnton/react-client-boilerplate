@@ -7,12 +7,16 @@ export default {
 		path: '/',
 		exact: true,
 		component: Home,
+		depth: 0,
 	},
 	about: {
 		path: '/about',
 		component: About,
+		depth: 0,
 	},
 	noMatch: {
+		path: '*',
 		component: NoMatch,
+		depth: 0,
 	}
 };

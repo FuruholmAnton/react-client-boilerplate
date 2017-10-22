@@ -1,21 +1,19 @@
 import {
-  BrowserRouter as Router,
-  Route,
-	Switch,
-  Link,
-	NavLink,
+	BrowserRouter as Router
 } from 'react-router-dom';
 import React from 'react';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
-import { onRouteChange } from './core/functions';
+import { withRouter } from 'react-router';
 
-import Layout from './Layout';
+import history from 'Core/history';
+import generalState from 'Redux/containers/generalState';
 
 
 export default () => {
+	const BlockAvoider = withRouter(generalState)
+
 	return (
-		<Router>
-			<Layout />
+		<Router history={history}>
+			<BlockAvoider />
 		</Router>
 	)
 };

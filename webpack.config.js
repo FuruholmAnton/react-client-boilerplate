@@ -75,7 +75,7 @@ var config = {
     host: HOST
   },
   plugins: [
-		new webpack.NamedModulesPlugin(),
+	new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin({

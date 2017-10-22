@@ -1,0 +1,29 @@
+:global {
+    body,
+    .container {
+      background: #fff;
+    }
+    .content {
+      position: relative;
+    }
+    
+    .full {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    #app,
+    .full,
+    .content {
+      height: 100%;
+      width: 100%;
+    }
+    
+    .page-transition-region {
+        background: #fff;
+        transform: none;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+}
