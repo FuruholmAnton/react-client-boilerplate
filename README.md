@@ -1,9 +1,10 @@
 # React client boilerplate
 
-- React
-- React Router v4
-- Webpack 2
-- Hot module reload v3
+- React 16.x
+- React Router 4.x
+- Redux
+- Webpack 3.x
+- Hot module reload
 - Babel / ES6
 - PostCSS / SCSS
 - Serverless
